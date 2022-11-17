@@ -13,4 +13,5 @@ COPY . .
 # What port we need
 EXPOSE 8888
 # Run cmd at run time
-CMD ["node", "index.js"]
+# CMD ["node", "index.js"]
+CMD ["npm", "run", "dev"]
