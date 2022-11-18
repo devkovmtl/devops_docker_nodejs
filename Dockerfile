@@ -10,8 +10,10 @@ COPY package.json .
 RUN npm install
 # copy evrything from our dir to /app container
 COPY . .
-# What port we need
-EXPOSE 8888
+# 
+ENV PORT 8888
+# just for reference 
+EXPOSE $PORT
 # Run cmd at run time
 # CMD ["node", "index.js"]
 CMD ["npm", "run", "dev"]

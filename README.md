@@ -28,3 +28,14 @@ linux mac:
 Anonymous Volume make sur to not override the node_modules into /app directory inside our container
 `docker run -v %cd%:/app -v /app/node_modules -p 8888:8888 -d --name node-app node-app-image`
 `docker run -v ${pwd}:/app -v /app/node_modules -p 8888:8888 -d --name node-app node-app-image`
+
+Make a bound mount read only:
+`docker run -v %cd%:/app:ro -v /app/node_modules -p 8888:8888 -d --name node-app node-app-image`
+
+Use environment variable with -e:
+`docker run -v ${pwd}:/app -v /app/node_modules -e PORT=4000 -p 8888:4000 -d --name node-app node-app-image`
+Load from file instead of -e
+`docker run -v ${pwd}:/app -v /app/node_modules --env-file ./.env -p 8888:4000 -d --name node-app node-app-image`
+
+To print env in linux:
+`printenv`
