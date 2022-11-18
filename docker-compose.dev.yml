@@ -1,0 +1,16 @@
+version: "3"
+# each container will be refers as service
+services:
+  # name of container
+  node-app:
+    build:
+      context: . # dockerfile
+      args: 
+        NODE_ENV: development
+    volumes:
+    # bind mount 
+      - ./:/app:ro
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev

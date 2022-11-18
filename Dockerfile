@@ -7,7 +7,12 @@ WORKDIR /app
 # Copy package into img 
 COPY package.json .
 # Build time
-RUN npm install
+# RUN npm install
+ARG NODE_ENV
+RUN if [ "$NODE_ENV"="development" ]; \
+    then npm install; \
+    else npm install --only=production; \
+    fi
 # copy evrything from our dir to /app container
 COPY . .
 # 
@@ -15,5 +20,5 @@ ENV PORT 8888
 # just for reference 
 EXPOSE $PORT
 # Run cmd at run time
-# CMD ["node", "index.js"]
-CMD ["npm", "run", "dev"]
+CMD ["node", "index.js"]
+# CMD ["npm", "run", "dev"]

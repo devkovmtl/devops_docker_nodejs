@@ -46,3 +46,7 @@ Docker-compose:
 `docker compose down -v`
 To force a build
 `docker compose up --build`
+
+When we have several file:
+`docker compose -f docker-compose.yml -f docker-compose.env.yml`
+`docker compose -f .\docker-compose.yml -f .\docker-compose.dev.yml down -v`

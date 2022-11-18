@@ -6,11 +6,5 @@ services:
     build: .
     ports:
       - "8888:4000"
-    volumes:
-      # bind mount 
-      - ./:/app:ro
-      - /app/node_modules
-    # environment:
-    #   - PORT=4000
-    env_file:
-      - ./.env
+    environment:
+      - PORT=4000
