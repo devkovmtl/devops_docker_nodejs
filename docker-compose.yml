@@ -8,3 +8,16 @@ services:
       - "8888:4000"
     environment:
       - PORT=4000
+  # mongo container
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      # save volume mongo-db
+      - mongo-db:/data/db
+# named volume
+volumes:
+  mongo-db:
