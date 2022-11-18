@@ -50,3 +50,5 @@ To force a build
 When we have several file:
 `docker compose -f docker-compose.yml -f docker-compose.env.yml`
 `docker compose -f .\docker-compose.yml -f .\docker-compose.dev.yml down -v`
+
+To communicate between service we can use name of service instead of ip address
