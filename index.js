@@ -11,10 +11,18 @@ const {
 const app = express();
 
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/mydb?authSource=admin`;
-mongoose
-  .connect(mongoURL)
-  .then(() => console.log("Successfully connected to db"))
-  .catch((err) => console.log(err));
+
+const connectWithRetry = () => {
+  mongoose
+    .connect(mongoURL)
+    .then(() => console.log("Successfully connected to db"))
+    .catch((err) => {
+      console.log(err);
+      setTimeout(connectWithRetry, 5000);
+    });
+};
+
+connectWithRetry();
 
 app.get("/", (req, res) => {
   res.send("<h2>Home Page</h2");

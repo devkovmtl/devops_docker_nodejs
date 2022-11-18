@@ -8,6 +8,8 @@ services:
       - "8888:4000"
     environment:
       - PORT=4000
+    depends_on:
+      - mongo # start mongo container
   # mongo container
   mongo:
     image: mongo
