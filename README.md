@@ -24,3 +24,7 @@ windows powershell:
 `docker run -v ${pwd}:/app -p 8888:8888 -d --name node-app node-app-image`
 linux mac:
 `docker run -v $(pwd):/app -p 8888:8888 -d --name node-app node-app-image`
+
+Anonymous Volume make sur to not override the node_modules into /app directory inside our container
+`docker run -v %cd%:/app -v /app/node_modules -p 8888:8888 -d --name node-app node-app-image`
+`docker run -v ${pwd}:/app -v /app/node_modules -p 8888:8888 -d --name node-app node-app-image`
