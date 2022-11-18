@@ -39,3 +39,10 @@ Load from file instead of -e
 
 To print env in linux:
 `printenv`
+
+Docker-compose:
+
+`docker compose up`
+`docker compose down -v`
+To force a build
+`docker compose up --build`

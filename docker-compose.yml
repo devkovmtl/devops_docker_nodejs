@@ -1,0 +1,16 @@
+version: "3"
+# each container will be refers as service
+services:
+  # name of container
+  node-app:
+    build: .
+    ports:
+      - "8888:4000"
+    volumes:
+      # bind mount 
+      - ./:/app:ro
+      - /app/node_modules
+    # environment:
+    #   - PORT=4000
+    env_file:
+      - ./.env
