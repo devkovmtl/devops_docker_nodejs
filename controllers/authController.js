@@ -87,3 +87,19 @@ exports.login = async (req, res, next) => {
     });
   }
 };
+
+exports.logout = async (req, res, next) => {
+  try {
+    return res.status.json({
+      success: true,
+      msg: "OK",
+      data: null,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: "Server error",
+      data: null,
+    });
+  }
+};
