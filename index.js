@@ -7,6 +7,7 @@ const {
   MONGO_IP,
   MONGO_PORT,
 } = require("./config/config");
+const postRouter = require("./routes/postRoutes");
 
 const app = express();
 
@@ -24,8 +25,12 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/", (req, res) => {
   res.send("<h2>Home Page</h2");
 });
+app.use("/api/v1/posts", postRouter);
 
 app.listen(APP_PORT, () => console.log(`listening on port ${APP_PORT}`));

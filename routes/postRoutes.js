@@ -1,21 +1,18 @@
 const { Router } = require("express");
-const {
-  getAllPosts,
-  getOnePostById,
-  createPost,
-  deleteAllPosts,
-  deletePostById,
-  updatePostById,
-} = require("../controllers/postController");
+const postController = require("../controllers/postController");
 
 const router = Router();
 
-router.get("/", getAllPosts);
-router.post("/", createPost);
-router.delete("/", deleteAllPosts);
+router
+  .route("/")
+  .get(postController.getAllPosts)
+  .post(postController.createPost)
+  .delete(postController.deleteAllPost);
 
-router.get("/:postId", getOnePostById);
-router.patch("/:postId", updatePostById);
-router.delete("/:postId", deletePostById);
+router
+  .route("/:postId")
+  .get(postController.getOnePostById)
+  .patch(postController.updatePostById)
+  .delete(postController.deletePostById);
 
 module.exports = router;

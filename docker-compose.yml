@@ -5,9 +5,9 @@ services:
   node-app:
     build: .
     ports:
-      - "8888:4000"
+      - "8888:8888"
     environment:
-      - PORT=4000
+      - PORT=8888
     depends_on:
       - mongo # start mongo container
   # mongo container
