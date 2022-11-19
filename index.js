@@ -8,6 +8,7 @@ const {
   MONGO_PORT,
 } = require("./config/config");
 const postRouter = require("./routes/postRoutes");
+const authRouter = require("./routes/authRoutes");
 
 const app = express();
 
@@ -28,9 +29,7 @@ connectWithRetry();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.send("<h2>Home Page</h2");
-});
 app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/auth", authRouter);
 
-app.listen(APP_PORT, () => console.log(`listening on port ${APP_PORT}`));
+app.listen(APP_PORT, () => console.log(`Listening on port ${APP_PORT}`));
