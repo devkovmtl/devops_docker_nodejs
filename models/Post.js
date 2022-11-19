@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const postchema = new Schema(
+const postSchema = new Schema(
   {
     title: { type: String, require: [true, "Post must have a title"] },
     author: String,
@@ -18,4 +18,4 @@ const postchema = new Schema(
   }
 );
 
-module.exports = model("Post", postchema);
+module.exports = model("Post", postSchema);
