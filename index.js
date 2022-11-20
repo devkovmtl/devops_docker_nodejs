@@ -10,9 +10,9 @@ const {
   MONGO_PASSWORD,
   MONGO_IP,
   MONGO_PORT,
-  REDIS_URL,
   REDIS_PORT,
   SESSION_SECRET,
+  REDIS_HOST,
 } = require("./config/config");
 const postRouter = require("./routes/postRoutes");
 const authRouter = require("./routes/authRoutes");
@@ -35,8 +35,10 @@ connectWithRetry();
 
 let redisClient = createClient({
   legacyMode: true,
-  host: REDIS_URL,
-  port: REDIS_PORT,
+  socket: {
+    host: REDIS_HOST,
+    port: +REDIS_PORT,
+  },
 });
 redisClient.connect().catch(console.error);
 
@@ -53,7 +55,7 @@ app.use(
       resave: false,
       saveUninitialized: false,
       httpOnly: true, // js on client can't access it
-      maxAge: 30000,
+      maxAge: 1000 * 60 * 60 * 24, // 24h
     },
   })
 );

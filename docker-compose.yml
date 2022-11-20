@@ -10,6 +10,7 @@ services:
       - PORT=8888
     depends_on:
       - mongo # start mongo container
+      - redis
   # mongo container
   mongo:
     image: mongo
@@ -21,6 +22,8 @@ services:
       - mongo-db:/data/db
   redis:
     image: redis
+    ports:
+      - "6379:6379"
     
 # named volume
 volumes:

@@ -72,6 +72,9 @@ exports.login = async (req, res, next) => {
 
     const { password: pwd, __v, ...others } = user;
 
+    // add user to session
+    req.session.user = others;
+
     return res.status(200).json({
       success: true,
       msg: "OK",
