@@ -1,6 +1,9 @@
 version: "3"
 # each container will be refers as service
 services:
+  nginx:
+    ports:
+      - "80:80"
   # name of container
   node-app:
     build:

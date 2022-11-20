@@ -44,6 +44,7 @@ redisClient.connect().catch(console.error);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.enable("trust proxy");
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -60,6 +61,14 @@ app.use(
   })
 );
 
+app.use("/api/v1/", (req, res) => {
+  console.log("It ran!");
+  return res.status(200).json({
+    success: true,
+    msg: "OK",
+    data: null,
+  });
+});
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/auth", authRouter);
 

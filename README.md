@@ -52,3 +52,6 @@ When we have several file:
 `docker compose -f .\docker-compose.yml -f .\docker-compose.dev.yml down -v`
 
 To communicate between service we can use name of service instead of ip address
+
+In order to scale up the container we pass the flag --scale
+`docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-app=2`
