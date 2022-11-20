@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const cors = require("cors");
 let RedisStore = require("connect-redis")(session);
 const { createClient } = require("redis");
 
@@ -42,6 +43,7 @@ let redisClient = createClient({
 });
 redisClient.connect().catch(console.error);
 
+app.use(cors({}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.enable("trust proxy");
